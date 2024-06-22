@@ -1,12 +1,12 @@
+import CardVideo from '../Card'
 import styles from './Categorias.module.css'
 
-function Categorias(){
+function Categorias({ nome, cor }){
     return(
-        <>
-        <div className={styles.categoria}>
-            
-        </div>
-        </>
+        <section className={styles.categorias}>
+            <h3 style={{backgroundColor: cor }} >{nome}</h3>
+            <CardVideo />
+        </section>
     )
 }
 

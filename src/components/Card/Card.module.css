@@ -1,0 +1,39 @@
+.card{
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card img{
+    width: 400px;
+}
+
+
+.caption{
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 400px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.delete, .edit{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.caption img{
+    width: 25px;
+    height: 28px;
+    cursor: pointer;
+}
+
+
+

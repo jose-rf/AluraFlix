@@ -1,15 +1,13 @@
-import React from 'react';
 import styles from './Banner.module.css';
-import imgBanner from './player.png'
 
-const Banner = () => {
-  return (
-    <div className={styles.banner}>
-        <div className="banner-item">
-          <img src={imgBanner} alt="" />
+function Banner({ imagem }) {
+    return (
+        <div
+            className={styles.capa}
+            style={{ backgroundImage: `url(/imagens/${imagem}.png)` }}
+        >
         </div>
-    </div>
-  );
+    );
 }
 
 export default Banner;
