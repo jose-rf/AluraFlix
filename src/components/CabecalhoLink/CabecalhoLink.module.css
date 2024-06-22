@@ -1,0 +1,15 @@
+.link{
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0 10px;
+    padding: 0.6rem 1rem;
+}
+
+.link:hover{
+    border: 3px solid #2271D1;
+    color: #2271D1;
+}
