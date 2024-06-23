@@ -3,6 +3,7 @@ import Banner from "../../components/Banner";
 import Cabecalho from "../../components/Cabecalho";
 import Rodape from "../../components/Rodape";
 import Categorias from '../../components/Categorias';
+import ModalZoom from '../../components/Modal';
 
 
 
@@ -37,6 +38,7 @@ function Inicio() {
             <Cabecalho />
             <Banner imagem="player" />
             {categorias.map(categorias => <Categorias nome={categorias.nome} cor={categorias.cor}/>)}
+            <ModalZoom  />
             <Rodape />
         </>
     );

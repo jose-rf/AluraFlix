@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from './LogoMain.png';
 import styles from './Cabecalho.module.css';
 import CabecalhoLink from '../CabecalhoLink';
+import Novovideo from '../../pages/NovoVideo'
 
 function Cabecalho() {
     return (
