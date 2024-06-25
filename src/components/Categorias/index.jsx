@@ -8,13 +8,13 @@ function Categorias({ nome, cor }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:3000/videos');
+        const response = await fetch('http://localhost:3001/videos');
         if (!response.ok) {
           throw new Error('Erro ao buscar dados da API');
         }
         const data = await response.json();
 
-        setVideos(data.videos); // Define todos os vídeos da API
+        setVideos(data); // Define todos os vídeos da API
 
       } catch (error) {
         console.error('Erro na requisição:', error);
