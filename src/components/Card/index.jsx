@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from './Card.module.css';
 import Modal from '../Modal';
 
-function CardVideo() {
+function CardVideo({ imagem, titulo, link }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -16,9 +16,10 @@ function CardVideo() {
     return (
         <>
             <figure className={styles.card}>
-                <img src="https://i.ytimg.com/vi/vAtCg_2TtsU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCVOIK7HTtHmjagxzY_ZrbEIpkC2A" alt="" />
+                <a href={link}><img src={imagem} alt="" /></a>
+                
                 <figcaption className={styles.caption}>
-                    <div className={styles.titulo}>Titulo</div>
+                    <div className={styles.titulo}>{titulo}</div>
                     <div className={styles.icons}>
                         <div className={styles.delete}>
                             <img src="/imagens/Vector.png" alt="" />

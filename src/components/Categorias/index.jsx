@@ -1,61 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import CardVideo from '../Card';
+import CardVideo from '../Card'; 
 import styles from './Categorias.module.css';
 
 function Categorias({ nome, cor }) {
-    const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState([]);
 
-    useEffect(() => {
-        const fetchVideos = async () => {
-            try {
-                const response = await fetch('http://localhost:3000/videos');
-                if (!response.ok) {
-                    throw new Error('Falha ao carregar os vídeos');
-                }
-                const data = await response.json();
-                setVideos(data.videos);
-            } catch (error) {
-                console.error('Erro ao buscar os vídeos:', error);
-            }
-        };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/videos');
+        if (!response.ok) {
+          throw new Error('Erro ao buscar dados da API');
+        }
+        const data = await response.json();
 
-        fetchVideos();
-    }, []);
+        setVideos(data.videos); // Define todos os vídeos da API
 
-    const categorias = {
-        'Front End': [],
-        'Back End': [],
-        'Inovação': [],
-        'Gestão': []
+      } catch (error) {
+        console.error('Erro na requisição:', error);
+      }
     };
 
-    videos.forEach(video => {
-        if (categorias.hasOwnProperty(video.categoria)) {
-            categorias[video.categoria].push(
-                <CardVideo
-                    key={video.id}
-                    titulo={video.titulo}
-                    imagem={video.imagem}
-                    link={video.link}
-                    descricao={video.descricao}
-                />
-            );
-        }
-    });
+    fetchData(); 
 
-    return (
-        <section className={styles.categorias}>
-            <h3 style={{ backgroundColor: cor }}>{nome}</h3>
-            <div>
-                {Object.entries(categorias).map(([categoria, videos]) => (
-                    <div key={categoria}>
-                        <h4>{categoria}</h4>
-                        {videos}
-                    </div>
-                ))}
-            </div>
-        </section>
-    );
+  }, []);
+
+  return (
+    <section className={styles.categorias}>
+      <h3 style={{ backgroundColor: cor }}>{nome}</h3>
+      <div className={styles.cardContainer}>
+        {videos.map((video) => (
+          <CardVideo
+            key={video.id}
+            imagem={video.imagem} 
+            titulo={video.titulo}
+            categoria={video.categoria}
+            link={video.link}
+          />
+        ))}
+      </div>
+    </section>
+  );
 }
 
 export default Categorias;
