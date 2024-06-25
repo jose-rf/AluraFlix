@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// Estilizando o container principal do EditarCard
+
 const CardContainer = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
 `;
 
-// Estilizando o título h1 dentro do EditarCard
+
 const CardTitle = styled.h1`
     color: #2271D1;
     font-weight: 700;
     font-size: 32px;
 `;
 
-// Estilizando labels dentro do EditarCard
+
 const CardLabel = styled.label`
     color: white;
     display: block;
@@ -24,7 +24,7 @@ const CardLabel = styled.label`
     margin-bottom: 10px;
 `;
 
-// Estilizando inputs, selects e textareas dentro do EditarCard
+
 const CardInput = styled.input`
     border: 2px solid #2271D1;
     border-radius: 10px;
@@ -58,7 +58,7 @@ const CardTextarea = styled.textarea`
     font-size: 20px;
 `;
 
-// Estilizando botões dentro do EditarCard
+
 const CardButton = styled.button`
     border: 2px solid white;
     color: white;
@@ -75,16 +75,22 @@ const CardButton = styled.button`
     }
 `;
 
-// Estilizando a seção de botões dentro do EditarCard
+
 const CardButtonSection = styled.div`
     display: flex;
     justify-content: space-between;
 `;
 
-const EditarCard = ({ titulo }) => {
+const Subtitulo = styled.p`
+    color: white;
+    font-size: 18px;
+`;
+
+const EditarCard = ({ titulo, subtitulo }) => {
     return (
         <CardContainer>
             <CardTitle>{titulo}</CardTitle>
+            <Subtitulo>{subtitulo}</Subtitulo>
             <form action="/salvar-dados" method="post">
                 <div>
                     <CardLabel htmlFor="titulo">Título</CardLabel>
@@ -102,7 +108,7 @@ const EditarCard = ({ titulo }) => {
                 </div>
                 <div>
                     <CardLabel htmlFor="imagem">Imagem</CardLabel>
-                    <CardInput type="link" id="imagem" name="imagem" />
+                    <CardInput type="url" id="imagem" name="imagem" />
                 </div>
                 <div>
                     <CardLabel htmlFor="video">Vídeo</CardLabel>

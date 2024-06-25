@@ -1,0 +1,29 @@
+{
+    "videos": [
+      {
+        "id": 1,
+        "titulo": "Aprendendo React",
+        "categoria": "Front End",
+        "imagem": "https://linkparaimagem.com/react.jpg",
+        "link": "https://www.youtube.com/watch?v=react-tutorial",
+        "descricao": "Um vídeo tutorial sobre como começar com React."
+      },
+      {
+        "id": 2,
+        "titulo": "Como cozinhar uma omelete",
+        "categoria": "Back End",
+        "imagem": "https://linkparaimagem.com/omelete.jpg",
+        "link": "https://www.youtube.com/watch?v=omelete-tutorial",
+        "descricao": "Dicas e truques para cozinhar a omelete perfeita."
+      },
+      {
+        "id": 3,
+        "titulo": "Introdução ao Node.js",
+        "categoria": "Inovação",
+        "imagem": "https://linkparaimagem.com/nodejs.jpg",
+        "link": "https://www.youtube.com/watch?v=nodejs-intro",
+        "descricao": "Aprenda os fundamentos do Node.js neste tutorial para iniciantes."
+      }
+    ]
+  }
+  

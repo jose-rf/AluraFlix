@@ -1,4 +1,4 @@
-.card{
+.card {
     display: flex;
     width: 400px;
     flex-direction: column;
@@ -6,34 +6,45 @@
     align-items: center;
 }
 
-.card img{
-    width: 400px;
+.card img {
+    width: 100%;  
 }
 
-
-.caption{
+.caption {
     background-color: rgba(0, 0, 0, 0.9);
-    width: 400px;
-    display: inline-flex;
+    width: 100%;  
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 3rem;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
-.delete, .edit{
+.titulo {
+    color: white;
+    word-break: break-word;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.icons {
+    display: flex;
+    gap: 3rem;
+}
+
+.delete, .edit {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     color: white;
 }
 
-.caption img{
+.caption img {
     width: 25px;
     height: 28px;
     cursor: pointer;
 }
-
-
-
