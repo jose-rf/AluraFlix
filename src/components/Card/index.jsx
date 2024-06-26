@@ -16,17 +16,17 @@ function CardVideo({ imagem, titulo, link }) {
     return (
         <>
             <figure className={styles.card}>
-                <a href={link}><img src={imagem} alt="" /></a>
+                <a href={link}><img src={imagem} alt={titulo} /></a>
                 
                 <figcaption className={styles.caption}>
                     <div className={styles.titulo}>{titulo}</div>
                     <div className={styles.icons}>
                         <div className={styles.delete}>
-                            <img src="/imagens/Vector.png" alt="" />
+                            <img src="/imagens/Vector.png" alt="Deletar" />
                             <p>Deletar</p>
                         </div>
                         <div className={styles.edit}>
-                            <img src="/imagens/editar.png" alt="" onClick={openModal} />
+                            <img src="/imagens/editar.png" alt="Editar" onClick={openModal} />
                             <p>Editar</p>
                         </div>
                     </div>

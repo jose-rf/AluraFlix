@@ -1,3 +1,4 @@
+// Categorias.js
 import React, { useState, useEffect } from 'react';
 import CardVideo from '../Card'; 
 import styles from './Categorias.module.css';
@@ -14,7 +15,9 @@ function Categorias({ nome, cor }) {
         }
         const data = await response.json();
 
-        setVideos(data); // Define todos os vídeos da API
+        // Filtrar vídeos pela categoria passada como prop
+        const filteredVideos = data.filter(video => video.categoria === nome);
+        setVideos(filteredVideos);
 
       } catch (error) {
         console.error('Erro na requisição:', error);
@@ -23,7 +26,7 @@ function Categorias({ nome, cor }) {
 
     fetchData(); 
 
-  }, []);
+  }, [nome]);
 
   return (
     <section className={styles.categorias}>
@@ -34,7 +37,6 @@ function Categorias({ nome, cor }) {
             key={video.id}
             imagem={video.imagem} 
             titulo={video.titulo}
-            categoria={video.categoria}
             link={video.link}
           />
         ))}
