@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { saveVideo } from '../../Metodo POST';
 
 const CardContainer = styled.div`
     display: flex;
@@ -10,14 +10,13 @@ const CardContainer = styled.div`
 
 const Opcao = styled.option`
     color: black;
-`
+`;
 
 const CardTitle = styled.h1`
     color: #2271D1;
     font-weight: 700;
     font-size: 32px;
 `;
-
 
 const CardLabel = styled.label`
     color: white;
@@ -26,7 +25,6 @@ const CardLabel = styled.label`
     font-weight: 700;
     margin-bottom: 10px;
 `;
-
 
 const CardInput = styled.input`
     border: 2px solid #2271D1;
@@ -61,7 +59,6 @@ const CardTextarea = styled.textarea`
     font-size: 20px;
 `;
 
-
 const CardButton = styled.button`
     border: 2px solid white;
     color: white;
@@ -78,7 +75,6 @@ const CardButton = styled.button`
     }
 `;
 
-
 const CardButtonSection = styled.div`
     display: flex;
     justify-content: space-between;
@@ -90,77 +86,53 @@ const Subtitulo = styled.p`
 `;
 
 const EditarCard = ({ titulo, subtitulo }) => {
-
-    //let valor = ''
-
-    const [valor, setValor] = useState('')
+    const [valor, setValor] = useState('');
+    const [valorImg, setValorImg] = useState('');
+    const [valorLink, setValorLink] = useState('');
+    const [valorCampo, setValorCampo] = useState('');
+    const [valorOp, setValorOp] = useState('');
 
     const aoDigitado = (evento) => {
-        setValor(evento.target.value)
-        console.log(valor)
-    }
-
-    const [valorImg, setValorImg] = useState('')
+        setValor(evento.target.value);
+    };
 
     const aoDigitadoImg = (evento) => {
-        setValorImg(evento.target.value)
-        console.log(valorImg)
-    }
-
-    const [valorLink, setValorLink] = useState('')
+        setValorImg(evento.target.value);
+    };
 
     const aoDigitadoLink = (evento) => {
-        setValorLink(evento.target.value)
-        console.log(valorLink)
-    }
-
-    const [valorCampo, setValorCampo] = useState('')
+        setValorLink(evento.target.value);
+    };
 
     const aoDigitadoCampo = (evento) => {
-        setValorCampo(evento.target.value)
-        console.log(valorCampo)
-    }
-
-    const [valorOp, setValorOp] = useState('')
+        setValorCampo(evento.target.value);
+    };
 
     const aoDigitadoOp = (evento) => {
-        setValorOp(evento.target.value)
-    }
+        setValorOp(evento.target.value);
+    };
 
-     const aoSalvar = async (evento) => {
-        evento.preventDefault()
+    const aoSalvar = async (evento) => {
+        evento.preventDefault();
 
         const novoVideo = {
-            titulo:valor,
+            titulo: valor,
             categoria: valorOp,
             imagem: valorImg,
             video: valorLink,
             descricao: valorCampo,
-        }
+        };
 
-        try {
-            const resposta = await fetch('http://localhost:3001/videos', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(novoVideo),
-            });
-        
-            if (resposta.ok) {
-                console.log('Video salvo com sucesso');
-                setValor('');
-                setValorImg('');
-                setValorLink('');
-                setValorCampo('');
-                setValorOp('');
-            } else {
-                console.error('Falha ao salvar o video');
-            }
-        } catch (erro) {
-            console.error('Erro ao salvar o video:', erro);
+        const sucesso = await saveVideo(novoVideo);
+
+        if (sucesso) {
+            setValor('');
+            setValorImg('');
+            setValorLink('');
+            setValorCampo('');
+            setValorOp('');
         }
-    }
+    };
 
     return (
         <CardContainer>
@@ -169,7 +141,7 @@ const EditarCard = ({ titulo, subtitulo }) => {
             <form action="/salvar-dados" method="post">
                 <div>
                     <CardLabel htmlFor="titulo">Título</CardLabel>
-                    <CardInput value={valor} onChange={aoDigitado}  type="text" id="titulo" name="titulo" required />
+                    <CardInput value={valor} onChange={aoDigitado} type="text" id="titulo" name="titulo" required />
                 </div>
                 <div>
                     <CardLabel htmlFor="categoria">Categoria</CardLabel>
