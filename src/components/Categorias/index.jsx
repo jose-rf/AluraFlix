@@ -39,7 +39,7 @@ function Categorias({ nome, cor, onEditClick }) {
 
     fetchData();
   }, [nome]);
-
+//fazer contexto para att
   return (
     <section className={styles.categorias}>
       <h3 style={{ backgroundColor: cor }}>{nome}</h3>
@@ -50,7 +50,7 @@ function Categorias({ nome, cor, onEditClick }) {
             id={video.id}
             imagem={video.imagem}
             titulo={video.titulo}
-            link={video.link}
+            link={video.video}
             onDelete={() => handleDelete(video.id)}
             onEdit={() => onEditClick(video)} 
           />

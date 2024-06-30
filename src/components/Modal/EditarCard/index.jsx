@@ -86,7 +86,7 @@ const Subtitulo = styled.p`
   font-size: 18px;
 `;
 
-const EditarCard = ({ titulo, subtitulo, videoToEdit, onSave }) => {
+const EditarCard = ({ titulo, subtitulo, videoToEdit }) => {
   const [valor, setValor] = useState('');
   const [valorImg, setValorImg] = useState('');
   const [valorLink, setValorLink] = useState('');
@@ -138,9 +138,9 @@ const EditarCard = ({ titulo, subtitulo, videoToEdit, onSave }) => {
   
       const sucesso = await updateVideo(videoToEdit.id, videoAtualizado); 
   
-      if (sucesso) {
-        onSave();
-      }
+     // if (sucesso) {
+        //onSave();
+      //}
     } else {
       const novoVideo = {
         titulo: valor,
@@ -152,9 +152,9 @@ const EditarCard = ({ titulo, subtitulo, videoToEdit, onSave }) => {
   
       const sucesso = await saveVideo(novoVideo);
   
-      if (sucesso) {
-        onSave(); 
-      }
+      //if (sucesso) {
+       // onSave(); 
+      //}
     }
   
    

@@ -50,7 +50,7 @@ function ModalZoom({ isOpen, onClose, videoToEdit, onSave }) {
               titulo="EDITAR VIDEO:" 
               subtitulo="Atualize as informações do vídeo"
               videoToEdit={videoToEdit}
-              onSave={onSave}
+              //onSave={onSave}
             />
             <form method="dialog"></form>
           </ModalDialog>
