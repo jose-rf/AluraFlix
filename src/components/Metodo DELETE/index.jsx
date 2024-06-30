@@ -1,6 +1,6 @@
-export async function deleteVideo(id) {
+export async function deleteVideo(id, updateFunction) {
     try {
-        const response = await fetch(`http://localhost:3001/produtos/${id}`, {
+        const response = await fetch(`http://localhost:3001/videos/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -10,6 +10,8 @@ export async function deleteVideo(id) {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
+
+        updateFunction();
 
         return true;
     } catch (error) {

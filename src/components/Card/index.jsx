@@ -3,7 +3,7 @@ import styles from './Card.module.css';
 import Modal from '../Modal';
 import { deleteVideo } from '../Metodo DELETE'; 
 
-function CardVideo({ id, imagem, titulo, link, onDelete }) { 
+function CardVideo({ id, imagem, titulo, link, onDelete, onEdit }) { 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => {
@@ -33,10 +33,10 @@ function CardVideo({ id, imagem, titulo, link, onDelete }) {
                     <div className={styles.titulo}>{titulo}</div>
                     <div className={styles.icons}>
                         <div className={styles.delete} onClick={handleDelete}>
-                            <img src="/imagens/Vector.png" alt="Deletar" />
+                            <img src="/imagens/Vector.png" alt="Deletar"/>
                             <p>Deletar</p>
                         </div>
-                        <div className={styles.edit}>
+                        <div className={styles.edit} onClick={onEdit}>
                             <img src="/imagens/editar.png" alt="Editar" onClick={openModal} />
                             <p>Editar</p>
                         </div>

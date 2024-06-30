@@ -1,10 +1,24 @@
-// Categorias.js
 import React, { useState, useEffect } from 'react';
 import CardVideo from '../Card'; 
 import styles from './Categorias.module.css';
+import { deleteVideo } from '../Metodo DELETE'; 
 
-function Categorias({ nome, cor }) {
+function Categorias({ nome, cor, onEditClick }) {
   const [videos, setVideos] = useState([]);
+
+  const handleDelete = async (id) => {
+    try {
+      const sucesso = await deleteVideo(id);
+      if (sucesso) {
+        console.log('Video deletado com sucesso');
+        setVideos(videos.filter(video => video.id !== id));
+      } else {
+        console.error('Falha ao deletar o video');
+      }
+    } catch (error) {
+      console.error('Erro ao deletar o video:', error);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,7 +29,6 @@ function Categorias({ nome, cor }) {
         }
         const data = await response.json();
 
-        // Filtrar vídeos pela categoria passada como prop
         const filteredVideos = data.filter(video => video.categoria === nome);
         setVideos(filteredVideos);
 
@@ -24,8 +37,7 @@ function Categorias({ nome, cor }) {
       }
     };
 
-    fetchData(); 
-
+    fetchData();
   }, [nome]);
 
   return (
@@ -35,9 +47,12 @@ function Categorias({ nome, cor }) {
         {videos.map((video) => (
           <CardVideo
             key={video.id}
-            imagem={video.imagem} 
+            id={video.id}
+            imagem={video.imagem}
             titulo={video.titulo}
             link={video.link}
+            onDelete={() => handleDelete(video.id)}
+            onEdit={() => onEditClick(video)} 
           />
         ))}
       </div>

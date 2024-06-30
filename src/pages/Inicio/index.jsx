@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Banner from '../../components/Banner';
 import Cabecalho from '../../components/Cabecalho';
 import Rodape from '../../components/Rodape';
@@ -25,17 +25,49 @@ function Inicio() {
     },
   ];
 
+  const [videoToEdit, setVideoToEdit] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleEditClick = (video) => {
+    setVideoToEdit(video);
+    setIsModalOpen(true);
+  };
+
+  const handleSave = () => {
+    
+    setVideoToEdit(null);
+    setIsModalOpen(false);
+   
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setVideoToEdit(null);
+  };
+
   return (
     <>
       <Cabecalho />
       <Banner categorias={categorias} />
       {categorias.map((categoria) => (
-        <Categorias key={categoria.nome} nome={categoria.nome} cor={categoria.cor} />
+        <Categorias
+          key={categoria.nome}
+          nome={categoria.nome}
+          cor={categoria.cor}
+          onEditClick={handleEditClick} 
+        />
       ))}
-      <ModalZoom />
+      {isModalOpen && (
+        <ModalZoom
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          videoToEdit={videoToEdit}
+          onSave={handleSave}
+        />
+      )}
       <Rodape />
     </>
   );
 }
 
-export default Inicio
+export default Inicio;
